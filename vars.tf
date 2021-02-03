@@ -3,22 +3,10 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-/* variable "key_name" {} */
-
-/* variable "cluster_name" {
-  description = "EKS cluster name."
-  default     = "eks_basic_demo"
-} */
-
 variable "k8s_secret_for_s1_github" {
   description = "This is the NAME of the K8s secret that stores your GitHub token (that is used to authenticate to the S1 GitHub packages repository (where the s1-agent and s1-helper Docker images are stored.))"
-  # ie: You need to get your gihub token via your account team (as of March 6th 2020)
+  # ie: You need to request your gihub token via SentinelOne Support (as of Jan 2021)
 }
-
-/* variable "service_account_name" {
-  description = "Service Account Name to use"
-  default     = "sentinelone"
-} */
 
 variable "s1_helper_image_repository" {
   description = "The image/package repository where the s1_helper image is located."
@@ -27,7 +15,7 @@ variable "s1_helper_image_repository" {
 
 variable "s1_helper_image_tag" {
   description = "Tag name (version) of the s1_helper image we want to use"
-  default     = "ea-4.1.1"
+  default     = "ea-4.6.1"
 }
 
 variable "s1_agent_image_repository" {
@@ -37,7 +25,7 @@ variable "s1_agent_image_repository" {
 
 variable "s1_agent_image_tag" {
   description = "Tag name (version) of the s1_agent image we want to use"
-  default     = "ea-4.1.1"
+  default     = "ea-4.6.1"
 }
 
 variable "s1_site_key" {

@@ -3,32 +3,20 @@ module "eks" {
   cluster_name    = local.cluster_name
   cluster_version = "1.18"
   subnets         = module.vpc.private_subnets
-
   workers_group_defaults = {
     root_volume_type = "gp2"
   }
-
   tags = {
     Environment = "s1-demo"
   }
-
   vpc_id = module.vpc.vpc_id
-
   worker_groups = [
     {
-      name          = "worker-group-1"
-      instance_type = "t2.small"
-      #additional_userdata           = "echo foo bar"
+      name                          = "worker-group-1"
+      instance_type                 = "t2.small"
       asg_desired_capacity          = 2
       additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
-    },
-    {
-      name          = "worker-group-2"
-      instance_type = "t2.medium"
-      #additional_userdata           = "echo foo bar"
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
-      asg_desired_capacity          = 1
-    },
+    }
   ]
 }
 

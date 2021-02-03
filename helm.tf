@@ -1,6 +1,5 @@
 provider "helm" {
   kubernetes {
-    #config_path = module.eks.kubeconfig
     host                   = data.aws_eks_cluster.cluster.endpoint
     cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority.0.data)
     exec {
@@ -21,7 +20,6 @@ resource "helm_release" "s1" {
   chart            = "./cwpp_agent/helm_charts/sentinelone"
   namespace        = kubernetes_namespace.s1.id
   create_namespace = true
-
   set {
     name  = "image.imagePullSecrets[0].name"
     value = var.k8s_secret_for_s1_github

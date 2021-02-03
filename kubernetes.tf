@@ -20,28 +20,23 @@ provider "kubernetes" {
   }
 }
 
-
 resource "kubernetes_namespace" "s1" {
   metadata {
     annotations = {
       name = var.s1_namespace
     }
-
     labels = {
       Environment = "s1-eks-demo"
     }
-
     name = var.s1_namespace
   }
 }
-
 
 resource "kubernetes_secret" "k8s_secret_for_s1_github" {
   metadata {
     name      = var.k8s_secret_for_s1_github
     namespace = kubernetes_namespace.s1.id
   }
-
   data = {
     ".dockerconfigjson" = <<DOCKER
 {
@@ -53,6 +48,5 @@ resource "kubernetes_secret" "k8s_secret_for_s1_github" {
 }
 DOCKER
   }
-
   type = "kubernetes.io/dockerconfigjson"
 }

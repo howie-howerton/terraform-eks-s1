@@ -14,9 +14,8 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "2.66.0"
-
+  source               = "terraform-aws-modules/vpc/aws"
+  version              = "2.66.0"
   name                 = "s1-vpc"
   cidr                 = "10.0.0.0/16"
   azs                  = data.aws_availability_zones.available.names
