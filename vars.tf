@@ -54,3 +54,7 @@ variable "helm_release_name" {
   description = "Helm Releaes Name to use for the Helm deployment"
   default     = "s1"
 }
+
+variable "aws_key_name" {
+  description = "SSH key name to use in order to connect to worker nodes"
+}
